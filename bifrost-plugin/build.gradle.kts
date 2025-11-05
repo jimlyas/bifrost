@@ -5,6 +5,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.gradle.publish)
     `java-gradle-plugin`
 }
 
@@ -18,8 +19,8 @@ gradlePlugin {
     vcsUrl.set("https://github.com/jimlyas/bifrost")
 
     plugins {
-        register("bifrost.settings") {
-            id = "bifrost.settings"
+        register("io.github.jimlyas.bifrost.settings") {
+            id = "io.github.jimlyas.bifrost.settings"
             implementationClass = "io.github.jimlyas.bifrost.plugin.BifrostSettingsPlugin"
             version = currentVersion
             description = "Bifrost Gradle Plugin for Settings Script"
@@ -27,8 +28,8 @@ gradlePlugin {
             tags = listOf("module", "dependency", "management")
         }
 
-        register("bifrost.project") {
-            id = "bifrost.project"
+        register("io.github.jimlyas.bifrost.project") {
+            id = "io.github.jimlyas.bifrost.project"
             implementationClass = "io.github.jimlyas.bifrost.plugin.BifrostProjectPlugin"
             version = currentVersion
             description = "Bifrost Gradle Plugin for Project Build Script"

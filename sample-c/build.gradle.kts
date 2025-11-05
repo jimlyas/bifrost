@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlin)
-    bifrost.project
+    id("io.github.jimlyas.bifrost.project")
     `maven-publish`
 }
 

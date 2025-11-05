@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin) apply false
-    bifrost.project apply false
+    id("io.github.jimlyas.bifrost.project") apply false
 }
 
 tasks.register<Delete>("clean") {
