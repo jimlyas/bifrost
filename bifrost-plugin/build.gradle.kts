@@ -14,8 +14,8 @@ group = "io.github.jimlyas"
 version = currentVersion
 
 gradlePlugin {
-    website.set("https://github.com/jimlyas")
-    vcsUrl.set("https://github.com/jimlyas")
+    website.set("https://github.com/jimlyas/bifrost")
+    vcsUrl.set("https://github.com/jimlyas/bifrost")
 
     plugins {
         register("bifrost.settings") {
@@ -24,7 +24,7 @@ gradlePlugin {
             version = currentVersion
             description = "Bifrost Gradle Plugin for Settings Script"
             displayName = "Bifrost Settings"
-            tags.set(listOf("module", "dependency", "management"))
+            tags = listOf("module", "dependency", "management")
         }
 
         register("bifrost.project") {
@@ -33,7 +33,7 @@ gradlePlugin {
             version = currentVersion
             description = "Bifrost Gradle Plugin for Project Build Script"
             displayName = "Bifrost Project"
-            tags.set(listOf("module", "dependency", "management"))
+            tags = listOf("module", "dependency", "management")
         }
     }
 }
