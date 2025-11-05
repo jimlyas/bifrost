@@ -1,0 +1,11 @@
+[versions]
+kotlin = "2.1.0"
+tomlkt = "0.5.0"
+
+[libraries]
+tomlkt = { module = "net.peanuuutz.tomlkt:tomlkt", version.ref = "tomlkt" }
+
+[plugins]
+bifrost = { id = "bifrost.project" }
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

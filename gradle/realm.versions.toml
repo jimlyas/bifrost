@@ -1,0 +1,10 @@
+[versions]
+module = "0.1.0-SNAPSHOT"
+
+[libraries]
+sample-a = { group = "io.github.jimlyas", name = "sample-a", version.ref = "module" }
+sample-b = { group = "io.github.jimlyas", name = "sample-b", version.ref = "module" }
+sample-c = { group = "io.github.jimlyas", name = "sample-c", version.ref = "module" }
+
+[bundles]
+active = ["sample-a", "sample-c"]

@@ -1,0 +1,48 @@
+@file:Suppress("UnstableApiUsage")
+
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
+plugins {
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.kotlinx.serialization)
+    `java-gradle-plugin`
+}
+
+val currentVersion = "0.1.0"
+
+group = "io.github.jimlyas"
+version = currentVersion
+
+gradlePlugin {
+    website.set("https://github.com/jimlyas")
+    vcsUrl.set("https://github.com/jimlyas")
+
+    plugins {
+        register("bifrost.settings") {
+            id = "bifrost.settings"
+            implementationClass = "io.github.jimlyas.bifrost.plugin.BifrostSettingsPlugin"
+            version = currentVersion
+            description = "Bifrost Gradle Plugin for Settings Script"
+            displayName = "Bifrost Settings"
+            tags.set(listOf("module", "dependency", "management"))
+        }
+
+        register("bifrost.project") {
+            id = "bifrost.project"
+            implementationClass = "io.github.jimlyas.bifrost.plugin.BifrostProjectPlugin"
+            version = currentVersion
+            description = "Bifrost Gradle Plugin for Project Build Script"
+            displayName = "Bifrost Project"
+            tags.set(listOf("module", "dependency", "management"))
+        }
+    }
+}
+
+kotlin {
+    jvmToolchain(21)
+    compilerOptions.jvmTarget.set(JvmTarget.JVM_21)
+}
+
+dependencies {
+    implementation(libs.tomlkt)
+}
