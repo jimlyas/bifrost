@@ -16,11 +16,11 @@ will still use that module during builds.
 This plugin will help you switch between prebuilt artifacts _(that you published)_ and local module dependency
 seamlessly.
 
-So you can only load the modules that you'll use, be it developing, bug fixing, or debugging,
+So you can only load the modules that you'll use, be it for developing, bug fixing, or debugging,
 and tell Gradle to include the other modules you don't use in their prebuilt artifact.
 
-It also improve build times because Gradle can skip any tasks for unused modules because they're just prebuilt artifact
-now and will be treated as any dependency.
+This also improve build times because Gradle can skip any tasks for unused modules because they're just prebuilt
+artifact now and will be treated just like any dependency.
 
 ## Prerequisites
 
@@ -34,7 +34,7 @@ You can follow this documentation for setting up a publishing:
 
 `bifrost` will use artifact from those maven repository and substitute it with local project when needed.
 
-> Make sure you name your artifact name the same as your project name, `bifrost` relies on those
+> Make sure to name your artifact the same as your project name, `bifrost` relies on those
 
 ## Quick Start
 
@@ -91,23 +91,15 @@ include(":always-on-module") // Module that you will always open
 
 // Add this too
 configure<BifrostSettingExtension> {
-    // Add module that you'll change the artifact later
+    // Add module that you'll change as prebuilt artifact later
     includeModule(":module-a", ":module-b", ":module-c")
 }
 ```
 
 ### Setting up `build.gradle.kts`
 
-At the root project `build.gradle.kts`, add the `io.github.jimlyas.bifrost.project` plugin
-
-```kotlin
-plugin {
-    id("io.github.jimlyas.bifrost.project") apply false
-}
-```
-
-And add the plugin to all the projects and replace all the module dependencies with dependency declared from realm
-version catalog
+Add the `io.github.jimlyas.bifrost.project` plugin to all the projects and replace all the module dependencies with
+dependency declared from realm version catalog
 
 ```kotlin
 plugin {
@@ -118,8 +110,8 @@ plugin {
 
 dependencies {
     // Before
-    implementation(project(":module-b"))
-    implementation(project(":module-c"))
+    // implementation(project(":module-b"))
+    // implementation(project(":module-c"))
 
     // After
     implementation(realm.module.b)
@@ -129,7 +121,28 @@ dependencies {
 
 ## Usage
 
-> Do not commit changes to `gradle.properties` and `realm.versions.toml` file, move them to different change list.
+To enable `bifrost`, change the **open.bifrost.gate** properties to `true`:
+
+```properties
+# ...
+# Other properties
+open.bifrost.gate=true
+```
+
+Then you can update the `active` entries inside `realm.versions.toml` to include module you want to load locally:
+
+```toml
+
+# Update this
+[bundles]
+active = ["module-a", "module-b"]
+```
+
+For example, configuration above will make sure Gradle will load project `module-a` and `module-b` but will load
+`module-c` as dependency.
+
+> Do not commit any changes to `gradle.properties` and `realm.versions.toml` file,
+> move them to different change list so you don't accidentally commit them.
 
 ## Disclaimer
 
