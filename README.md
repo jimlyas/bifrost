@@ -32,6 +32,7 @@ You can follow this documentation for setting up a publishing:
 - [Android Library](https://developer.android.com/build/publish-library)
 - [Java or Kotlin Library](https://docs.gradle.org/current/userguide/publishing_maven.html)
 
+After setting it up and publishing your artifact, then you can use `bifrost`.
 `bifrost` will use artifact from those maven repository and substitute it with local project when needed.
 
 > Make sure to name your artifact the same as your project name, `bifrost` relies on those
@@ -141,6 +142,8 @@ active = ["module-a", "module-b"]
 For example, configuration above will make sure Gradle will load project `module-a` and `module-b` but will load
 `module-c` as dependency.
 
+Finally, sync your Gradle project.
+
 > Do not commit any changes to `gradle.properties` and `realm.versions.toml` file,
 > move them to different change list so you don't accidentally commit them.
 
@@ -155,11 +158,12 @@ MIT License
 
 Copyright © 2025 Jimly Asshiddiqy
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
-associated documentation files (the "Software"), to deal in the Software without restriction,
-including without limitation the rights to use, copy, modify, merge, publish, distribute,
-sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this 
+software andassociated documentation files (the "Software"), to deal in the Software 
+without restriction,including without limitation the rights to use, copy, modify, 
+merge, publish, distribute,sublicense, and/or sell copies of the Software, and 
+to permit persons to whom the Software is furnished to do so, subject to 
+the following conditions:
 
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
