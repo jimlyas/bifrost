@@ -20,8 +20,11 @@ jobs:
         run: chmod +x gradlew
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
+      - name: Build with Gradle
+        run: |
+          ./gradlew :bifrost-plugin:build
       - name: Publish to Github Package and Gradle Plugin Portal
-        run: ./gradlew :bifrost-plugin:publish -Pgradle.publish.key=${{ secrets.GRADLE_KEY }} -Pgradle.publish.secret=${{ secrets.GRADLE_SECRET }} --no-configuration-cache
+        run: ./gradlew :bifrost-plugin:publishGprPublicationToGitHubPackagesRepository :bifrost-plugin:publishPlugins  -Pgradle.publish.key=${{ secrets.GRADLE_KEY }} -Pgradle.publish.secret=${{ secrets.GRADLE_SECRET }} --no-configuration-cache
         env:
           BIFROST_VERSION: ${{ github.event.inputs.versionName }}
           GPR_USERNAME: ${{ secrets.USERNAME }}
