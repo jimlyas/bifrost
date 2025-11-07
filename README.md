@@ -106,7 +106,7 @@ dependency declared from realm version catalog
 plugin {
     // ...
     // Other plugins
-    id("io.github.jimlyas.bifrost.project") // Add this
+    id("io.github.jimlyas.bifrost.project") version "<LATEST VERSION>" // Add this
 }
 
 dependencies {

@@ -1,6 +1,6 @@
 import io.github.jimlyas.bifrost.extension.BifrostSettingExtension
 
-rootProject.name = "bifrost gradle plugin"
+rootProject.name = "bifrost"
 
 pluginManagement {
     includeBuild("bifrost-plugin")
