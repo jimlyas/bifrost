@@ -74,7 +74,8 @@ Make sure the entry name inside `libraries` have the same name as the library na
 
 ### Setting up `settings.gradle.kts`
 
-Add the `io.github.jimlyas.bifrost.settings` plugin to the setting script
+You can use `bifrost` plugin from Gradle Plugin Portal, Add the `io.github.jimlyas.bifrost.settings`
+plugin to the setting script
 
 ```kotlin
 pluginManagement {

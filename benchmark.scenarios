@@ -1,0 +1,18 @@
+gate_opened {
+  title = "building with bifrost gate is opened"
+  tasks = [":sample-a:build"]
+  apply-abi-change-to ="sample-c/src/main/kotlin/io/github/jimlyas/sample/c/SimpleLogging.kt"
+  gradle-args = ["-Popen.bifrost.gate=true", "--rerun-tasks"]
+  warm-ups = 1
+  cleanup-tasks = ["clean"]
+  iterations = 5
+}
+gate_closed {
+  title = "building with bifrost gate is closed"
+  tasks = [":sample-a:build"]
+  apply-abi-change-to ="sample-c/src/main/kotlin/io/github/jimlyas/sample/c/SimpleLogging.kt"
+  gradle-args = ["-Popen.bifrost.gate=false", "--rerun-tasks"]
+  warm-ups = 1
+  cleanup-tasks = ["clean"]
+  iterations = 5
+}

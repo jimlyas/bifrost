@@ -49,6 +49,9 @@ internal class BifrostSettingsPlugin : Plugin<Settings> {
                 else settingExtension.modules
             )
         }
-    }
 
+        target.gradle.projectsLoaded {
+            target.gradle.rootProject.pluginManager.apply("io.github.jimlyas.bifrost.project")
+        }
+    }
 }
