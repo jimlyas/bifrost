@@ -5,7 +5,7 @@ rootProject.name = "bifrost"
 pluginManagement {
     includeBuild("bifrost-plugin")
 //    resolutionStrategy.eachPlugin {
-//        if (requested.id.id == "io.github.jimlyas.bifrost.settings") useModule(
+//        if (requested.id.id == "io.github.jimlyas.bifrost") useModule(
 //            "io.github.jimlyas:bifrost:${requested.version}"
 //        )
 //    }

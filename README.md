@@ -74,7 +74,7 @@ Make sure the entry name inside `libraries` have the same name as the library na
 
 ### Setting up `settings.gradle.kts`
 
-You can use `bifrost` plugin from Gradle Plugin Portal, Add the `io.github.jimlyas.bifrost.settings`
+You can use `bifrost` plugin from Gradle Plugin Portal, Add the `io.github.jimlyas.bifrost`
 plugin to the setting script
 
 ```kotlin
@@ -86,7 +86,7 @@ pluginManagement {
 }
 
 plugin {
-    id("io.github.jimlyas.bifrost.settings") // Add this 
+    id("io.github.jimlyas.bifrost") version "<LATEST VERSION>" // Add this 
 }
 
 include(":always-on-module") // Module that you will always open
@@ -100,14 +100,17 @@ configure<BifrostSettingExtension> {
 
 ### Setting up `build.gradle.kts`
 
-Add the `io.github.jimlyas.bifrost.project` plugin to all the projects and replace all the module dependencies with
-dependency declared from realm version catalog
+You don't need to apply the plugin at the root's `build.gradle.kts`, just for the build script that actually use any
+dependencies from the `realm.versions.toml`.
+
+Add the `io.github.jimlyas.bifrost.project` plugin and replace all the module dependencies with dependency declared
+from realm version catalog.
 
 ```kotlin
 plugin {
     // ...
     // Other plugins
-    id("io.github.jimlyas.bifrost.project") version "<LATEST VERSION>" // Add this
+    id("io.github.jimlyas.bifrost.project") // Add this
 }
 
 dependencies {
@@ -150,7 +153,7 @@ Finally, sync your Gradle project.
 
 ## Disclaimer
 
-Bifrost currently does not support nested Gradle project.
+Bifrost currently does not support nested Gradle project and Kotlin multi-platform.
 
 ## License
 
