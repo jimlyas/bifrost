@@ -28,6 +28,8 @@ jobs:
       - name: Build with Gradle
         run: |
           ./gradlew :bifrost-plugin:build
+        env:
+          BIFROST_VERSION: ${{ github.event.inputs.versionName }}
       - name: Publish to Github Package and Gradle Plugin Portal
         run: ./gradlew :bifrost-plugin:publishGprPublicationToGitHubPackagesRepository :bifrost-plugin:publishPlugins -Pgradle.publish.key=${{ secrets.GRADLE_KEY }} -Pgradle.publish.secret=${{ secrets.GRADLE_SECRET }}
         env:
@@ -52,6 +54,8 @@ jobs:
       - name: Build with Gradle
         run: |
           ./gradlew :bifrost-plugin:build
+        env:
+          BIFROST_VERSION: ${{ github.event.inputs.versionName }}
       - name: Create new tag
         run: |
           git config user.email "j_mly@ymail.com"
