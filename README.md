@@ -35,6 +35,7 @@ You can follow this documentation for setting up a publishing:
 After setting it up and publishing your artifact, then you can use `bifrost`.
 `bifrost` will use artifact from those maven repository and substitute it with local project when needed.
 
+> [!IMPORTANT]
 > Make sure to name your artifact the same as your project name, `bifrost` relies on those
 
 ## Quick Start
@@ -148,6 +149,7 @@ For example, configuration above will make sure Gradle will load project `module
 
 Finally, sync your Gradle project.
 
+> [!WARNING]
 > Do not commit any changes to `gradle.properties` and `realm.versions.toml` file,
 > move them to different change list so you don't accidentally commit them.
 
